@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galvão Psi | Psicologia Clínica e Neuropsicologia</title>
+  <meta name="description" content="Galvão Psi - Consultório psicológico especializado em Terapia Cognitivo-Comportamental (TCC) e Avaliação Neuropsicológica, com atendimento presencial e online." />
+
+  <!-- Tipografia simples via Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cor-fundo: #f8f4ec;        /* tom claro, próximo ao fundo da logo */
+      --cor-primaria: #0f6f88;     /* azul da logo */
+      --cor-secundaria: #4f9f3d;   /* verde da logo */
+      --cor-dourado: #c7a46b;      /* dourado suave */
+      --cor-texto: #333333;
+      --cor-texto-suave: #666666;
+      --cor-branco: #ffffff;
+      --sombra-suave: 0 10px 25px rgba(0,0,0,0.06);
+      --raio-card: 14px;
+      --largura-max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Layout geral */
+    .container {
+      width: 100%;
+      max-width: var(--largura-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      background: var(--cor-fundo);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 0.75rem 0;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+    }
+
+    .logo-img {
+      width: 70px;
+      height: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cor-primaria);
+    }
+
+    .logo-text span {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cor-secundaria);
+      font-weight: 600;
+    }
+
+    .header-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--cor-texto-suave);
+    }
+
+    .header-cta strong {
+      color: var(--cor-primaria);
+      font-weight: 700;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #29a862, #1f8b50);
+      color: var(--cor-branco);
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+      filter: brightness(1.05);
+    }
+
+    .btn-whatsapp svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      color: var(--cor-primaria);
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--cor-texto-suave);
+      max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15,111,136,0.15);
+      background-color: rgba(255,255,255,0.8);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cor-primaria);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-outline {
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--cor-primaria);
+      background: transparent;
+      color: var(--cor-primaria);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--cor-primaria);
+      color: var(--cor-branco);
+    }
+
+    .hero-note {
+      font-size: 0.9rem;
+      color: var(--cor-texto-suave);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--sombra-suave);
+      border: 1px solid rgba(199,164,107,0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cor-primaria);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--cor-texto-suave);
+      margin-bottom: 0.7rem;
+    }
+
+    .small-tag {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cor-secundaria);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin: 0.8rem 0;
+      padding: 0;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--cor-texto);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-list li span.icon {
+      margin-top: 0.2rem;
+      color: var(--cor-secundaria);
+    }
+
+    /* Seções genéricas */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--cor-primaria);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: var(--cor-texto-suave);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    /* Serviços */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--raio-card);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--sombra-suave);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--cor-texto-suave);
+      margin-bottom: 0.75rem;
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--cor-texto);
+    }
+
+    .card ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Seção TCC x Neuropsicologia */
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .pill-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cor-secundaria);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .lead {
+      font-size: 0.96rem;
+      color: var(--cor-texto-suave);
+      margin-bottom: 0.8rem;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.9rem;
+      color: var(--cor-texto);
+    }
+
+    .check-list span.icon {
+      color: var(--cor-secundaria);
+      margin-top: 0.08rem;
+    }
+
+    /* Valores, missão, visão */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .values-grid .card {
+      border-top: 3px solid var(--cor-dourado);
+    }
+
+    .values-grid .card h3 {
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cor-primaria);
+    }
+
+    /* Sessão "Como funciona" */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.4rem;
+    }
+
+    .step {
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--cor-primaria);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--cor-primaria);
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--cor-texto);
+    }
+
+    /* Contato / CTA final */
+    .contact-section {
+      padding: 2.8rem 0 3.2rem;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(15,111,136,0.96), rgba(79,159,61,0.95));
+      border-radius: 20px;
+      padding: 2rem 1.6rem;
+      color: var(--cor-branco);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-box p {
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .contact-info div {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .contact-actions .btn-whatsapp {
+      background: #ffffff;
+      color: #1f8b50;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .contact-actions .btn-whatsapp:hover {
+      filter: brightness(0.98);
+    }
+
+    .contact-actions small {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    /* Rodapé */
+    footer {
+      padding: 1.8rem 0 2rem;
+      font-size: 0.8rem;
+      color: var(--cor-texto-suave);
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--cor-primaria);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    /* Responsividade */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .services-grid,
+      .values-grid,
+      .steps,
+      .split {
+        grid-template-columns: 1fr;
+      }
+      header {
+        position: static;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-cta {
+        align-items: flex-start;
+      }
+      .hero {
+        padding-top: 2.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .logo-img {
+        width: 56px;
+      }
+      .logo-text h1 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="top-bar">
+        <div class="logo-area">
+          <!-- Substituir LOGOTIPO.png pelo nome real do arquivo -->
+          <img src="LOGOTIPO.png" alt="Logomarca Galvão Psi" class="logo-img">
+          <div class="logo-text">
+            <h1>Galvão Psi</h1>
+            <span>Psicologia Clínica & Neuropsicologia</span>
+          </div>
+        </div>
+        <div class="header-cta">
+          <span><strong>Atendimento presencial e online</strong></span>
+          <span>Agende sua sessão ou avaliação</span>
+          <a class="btn-whatsapp" href="https://wa.me/5521986337404?text=Olá%2C+gostaria+de+agendar+uma+consulta" target="_blank" rel="noopener noreferrer">
+            <!-- Ícone simples em SVG -->
+            <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M16 3C9.37 3 4 8.37 4 15c0 2.13.56 4.11 1.54 5.86L4 29l8.35-1.5A11.85 11.85 0 0016 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.05c-1.72 0-3.38-.45-4.85-1.31l-.35-.21-4.95.89.93-4.83-.23-.4A9.13 9.13 0 016.9 15 9.12 9.12 0 0116 5.95 9.12 9.12 0 0125.1 15 9.12 9.12 0 0116 25.05zm4.75-6.84c-.26-.13-1.54-.76-1.78-.85-.24-.09-.42-.13-.6.13-.18.26-.7.85-.86 1.03-.16.18-.32.2-.58.07-.26-.13-1.11-.41-2.12-1.31-.78-.7-1.31-1.57-1.46-1.83-.15-.26-.02-.4.11-.53.12-.12.26-.32.39-.48.13-.16.17-.26.26-.44.09-.18.04-.34-.02-.47-.06-.13-.6-1.44-.82-1.98-.22-.53-.45-.46-.6-.47l-.51-.01c-.18 0-.47.07-.72.34-.25.26-.94.91-.94 2.22 0 1.31.96 2.58 1.09 2.76.13.18 1.89 2.89 4.59 4.05 2.7 1.16 2.7.77 3.19.72.49-.05 1.54-.63 1.76-1.24.22-.61.22-1.13.16-1.24-.06-.11-.24-.18-.5-.31z"/>
+            </svg>
+            Falar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h2 class="hero-title">
+            Cuidado psicológico que une ciência, acolhimento e propósito.
+          </h2>
+          <p class="hero-subtitle">
+            Na Galvão Psi, cada pessoa é recebida de forma ética, respeitosa e humanizada, 
+            com intervenções baseadas em evidências em Terapia Cognitivo-Comportamental (TCC)
+            e avaliações neuropsicológicas completas.
+          </p>
+
+          <div class="hero-highlight">
+            <span class="chip">Terapia Cognitivo-Comportamental (TCC)</span>
+            <span class="chip">Avaliação Neuropsicológica</span>
+            <span class="chip">Atendimento Online & Presencial</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn-whatsapp" href="https://wa.me/5521986337404?text=Olá%2C+gostaria+de+agendar+uma+consulta" target="_blank" rel="noopener noreferrer">
+              Agendar atendimento agora
+            </a>
+            <a href="#servicos" class="btn-outline">Conhecer serviços</a>
+          </div>
+
+          <p class="hero-note">
+            Psicólogo responsável: <strong>Julio Galvão</strong> – CRP 05/66197
+          </p>
+        </div>
+
+        <div>
+          <div class="hero-card">
+            <div class="small-tag">Primeiros passos</div>
+            <h2>Como a Galvão Psi pode te ajudar hoje?</h2>
+            <p>Algumas questões comuns que acompanhamos no consultório:</p>
+            <ul class="hero-list">
+              <li>
+                <span class="icon">•</span>
+                <span>Ansiedade, depressão, estresse, autoestima e dificuldades nos relacionamentos.</span>
+              </li>
+              <li>
+                <span class="icon">•</span>
+                <span>Dificuldades de atenção, memória e aprendizagem (crianças, adolescentes e adultos).</span>
+              </li>
+              <li>
+                <span class="icon">•</span>
+                <span>Apoio em momentos de crise emocional, luto, mudanças importantes e transições de vida.</span>
+              </li>
+            </ul>
+            <p style="font-size:0.85rem;color:var(--cor-texto-suave);margin-top:0.4rem;">
+              Você será acolhido com escuta qualificada e um plano de cuidado personalizado,
+              sempre dentro dos princípios éticos da Psicologia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title">Serviços da Galvão Psi</h2>
+      <p class="section-subtitle">
+        Trabalhamos com foco na promoção de saúde mental e qualidade de vida,
+        oferecendo atendimentos individualizados e avaliações especializadas.
+      </p>
+
+      <div class="services-grid">
+        <div class="card">
+          <h3>Terapia Cognitivo-Comportamental (TCC)</h3>
+          <p>
+            Abordagem estruturada, ativa e colaborativa, orientada por evidências científicas
+            para diferentes quadros emocionais e comportamentais.
+          </p>
+          <ul>
+            <li>Ansiedade, depressão, estresse e burnout.</li>
+            <li>Transtornos de humor, autoestima e habilidades sociais.</li>
+            <li>TCC para adolescentes, adultos e idosos.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Avaliação Neuropsicológica</h3>
+          <p>
+            Processo cuidadoso de investigação de funções cognitivas, emocionais e comportamentais,
+            com uso de instrumentos reconhecidos.
+          </p>
+          <ul>
+            <li>Atenção, memória, linguagem e funções executivas.</li>
+            <li>Queixas de aprendizagem e dificuldade de concentração (como TDAH).</li>
+            <li>Relatórios técnicos para encaminhamentos clínicos e educacionais.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Atendimento Online & Presencial</h3>
+          <p>
+            Você escolhe a modalidade que melhor se adapta à sua rotina, mantendo o mesmo compromisso ético
+            e qualidade no cuidado.
+          </p>
+          <ul>
+            <li>Consultório particular e parcerias com plataformas de telepsicologia.</li>
+            <li>Ambiente seguro, sigiloso e acolhedor.</li>
+            <li>Flexibilidade de horários para acompanhamento contínuo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TCC & NEUROPSICOLOGIA -->
+  <section>
+    <div class="container">
+      <div class="split">
+        <div>
+          <div class="pill-title">Terapia Cognitivo-Comportamental</div>
+          <h2 class="section-title" style="text-align:left;margin-bottom:0.6rem;font-size:1.4rem;">
+            Entendendo pensamentos, emoções e comportamentos
+          </h2>
+          <p class="lead">
+            A TCC é uma abordagem focal, prática e orientada a objetivos. Por meio dela, você aprende a reconhecer
+            padrões de pensamento que alimentam sofrimento e a construir novas formas de lidar com situações do dia a dia.
+          </p>
+          <ul class="check-list">
+            <li><span class="icon">✓</span> Sessões estruturadas, com plano de intervenção e tarefas entre encontros, quando adequado.</li>
+            <li><span class="icon">✓</span> Técnicas para manejo de ansiedade, humor, crenças disfuncionais e regulação emocional.</li>
+            <li><span class="icon">✓</span> Atendimento sensível ao contexto de cada pessoa, com respeito à sua história e ritmo.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="pill-title">Avaliação Neuropsicológica</div>
+          <h2 class="section-title" style="text-align:left;margin-bottom:0.6rem;font-size:1.4rem;">
+            Investigação cuidadosa do funcionamento cognitivo
+          </h2>
+          <p class="lead">
+            A avaliação neuropsicológica auxilia na compreensão de dificuldades de atenção, memória,
+            aprendizagem e comportamento, contribuindo para diagnósticos mais precisos e intervenções eficazes.
+          </p>
+          <ul class="check-list">
+            <li><span class="icon">✓</span> Entrevista inicial, aplicação de testes e questionários reconhecidos.</li>
+            <li><span class="icon">✓</span> Devolutiva clara e respeitosa, com orientações para família, escola ou outros profissionais.</li>
+            <li><span class="icon">✓</span> Relatórios técnicos elaborados com rigor ético e científico.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES, MISSÃO, VISÃO -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Nossa essência em cada atendimento</h2>
+      <p class="section-subtitle">
+        A identidade da Galvão Psi se expressa em três pilares: valores éticos sólidos, um propósito claro e uma visão
+        de futuro comprometida com a promoção de saúde mental de forma acessível, responsável e humana.
+      </p>
+
+      <div class="values-grid">
+        <div class="card">
+          <h3>Valores</h3>
+          <p>
+            Ética, acolhimento, respeito à singularidade e compromisso com a ciência orientam todas as decisões
+            do consultório, desde o primeiro contato até o encerramento do processo terapêutico.
+          </p>
+          <p style="font-size:0.86rem;color:var(--cor-texto-suave);">
+            Cada pessoa é vista em sua totalidade, considerando contexto, história de vida e recursos pessoais.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Missão</h3>
+          <p>
+            Oferecer atendimento psicológico e neuropsicológico de qualidade, baseado em evidências e humanizado,
+            promovendo alívio do sofrimento, desenvolvimento de habilidades e fortalecimento da autonomia.
+          </p>
+          <p style="font-size:0.86rem;color:var(--cor-texto-suave);">
+            A missão é ser um espaço seguro de escuta, reflexão e construção de novas possibilidades.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Visão</h3>
+          <p>
+            Ser referência em cuidado psicológico e avaliação neuropsicológica, ampliando o acesso a intervenções
+            responsáveis e atualizadas, com integração entre clínica, educação e demais contextos de vida.
+          </p>
+          <p style="font-size:0.86rem;color:var(--cor-texto-suave);">
+            Um consultório que acompanha as transformações da sociedade sem abrir mão da ética profissional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA / PASSOS -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Como funciona o agendamento</h2>
+      <p class="section-subtitle">
+        O processo é simples, seguro e pensado para que você se sinta acolhido desde o primeiro contato.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <strong>Contato inicial</strong>
+          <p>Envie uma mensagem pelo WhatsApp ou formulário de contato com sua disponibilidade e breve descrição da demanda.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <strong>Alinhamento e agendamento</strong>
+          <p>Juntos definimos o melhor formato (online ou presencial), horários e frequência das sessões ou etapas da avaliação.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <strong>Início do acompanhamento</strong>
+          <p>As sessões acontecem em ambiente acolhedor e sigiloso, com planejamento terapêutico ou protocolo de avaliação personalizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / CTA -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <h2>Pronto para dar o próximo passo na sua saúde mental?</h2>
+          <p>
+            Se você percebe que é hora de cuidar de si com mais atenção ou de buscar uma avaliação especializada,
+            a Galvão Psi está pronta para caminhar ao seu lado, com seriedade, empatia e compromisso.
+          </p>
+          <div class="contact-info">
+            <div><strong>Psicólogo:</strong> Julio Galvão – CRP 05/66197</div>
+            <div><strong>Modalidades:</strong> Presencial e online</div>
+            <!-- Ajuste o endereço conforme necessário -->
+            <div><strong>Endereço:</strong> (Estrada dos Três Rios, 741, sala 409, Freguesia, Rio de Janeiro/RJ)</div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn-whatsapp" href="https://wa.me/5521986337404?text=Olá%2C+gostaria+de+agendar+uma+consulta" target="_blank" rel="noopener noreferrer">
+            Agendar pelo WhatsApp
+          </a>
+          <small>
+            Resposta em horário comercial. Em situações de urgência, procure um serviço de
+            saúde ou emergência da sua região.
+          </small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-logo">Galvão Psi</div>
+        <div>
+          © <span id="ano-atual"></span> Galvão Psi – Psicologia Clínica & Neuropsicologia.
+          Todos os direitos reservados.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza ano automaticamente
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
